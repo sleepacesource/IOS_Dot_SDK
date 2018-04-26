@@ -36,6 +36,10 @@ typedef NS_ENUM(NSInteger,Milkly_MotionfreqLevels) {
     Milkly_MotionfreqLevel_TooMuch,//体动极多
 };
 
+@interface SLPMilkyHistoryData : SLPHistoryData
+@property (nonatomic,assign) M_HistoryDataTypes dataStatus;
+@end
+
 @interface M_HistoryDataDetail : HistoryDataDetail
 @property (nonatomic,strong) NSArray *flagstatusAry;
 @property (nonatomic,strong) NSArray *feature_01Ary;
@@ -48,7 +52,6 @@ typedef NS_ENUM(NSInteger,Milkly_MotionfreqLevels) {
 @end
 
 @interface M_HistoryDataAnalysis : HistoryDataAnalysis
-@property (nonatomic,assign) M_HistoryDataTypes type;
 @property (nonatomic,strong) NSArray<NSNumber *> *motion_intensityAry;/*体动 0-250*/
 @property (nonatomic,assign) Milkly_MotionfreqLevels motionfreqLevel;//体动频率
 @end

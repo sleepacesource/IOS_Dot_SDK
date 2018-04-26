@@ -73,7 +73,7 @@
     obj.date= [sd stringFromDate:startDate];
     
     obj.reportFlag=[NSNumber numberWithInteger:historyData.summary.reportFlag];
-    obj.InvalidFlag=[NSNumber numberWithInteger:analysis.type];
+    obj.InvalidFlag=[NSNumber numberWithInteger:((SLPMilkyHistoryData *)analysis).dataStatus];
     obj.SleepCurveStr=[NSString stringWithFormat:@"[%@]",[analysis.sleepCurveArray componentsJoinedByString:@","]];
     obj.sleepCurveStatusStr=[NSString stringWithFormat:@"[%@]",[analysis.sleepCurveStatusArray componentsJoinedByString:@","]];
     obj.duration=[NSNumber numberWithInteger:analysis.duration];
@@ -88,7 +88,7 @@
     obj.MdLightSleepPerc=[NSNumber numberWithInteger:analysis.lightSleepPerc];
     obj.MdWakeSleepPerc=[NSNumber numberWithInteger:analysis.wakeSleepPerc];;
     obj.MdWakeUpTime=[NSNumber numberWithInteger:analysis.wakeAndLeaveBedBeforeAllTime];
-    obj.wake_times=[NSNumber numberWithInteger:analysis.wake_Times];
+    obj.wake_times=[NSNumber numberWithInteger:analysis.wakeTimes];
     obj.timeStep=[NSNumber numberWithInteger:60];
     obj.stopMode=[NSNumber numberWithInteger:0];
     obj.isupload=[NSNumber numberWithInteger:1];
