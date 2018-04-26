@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger,HistoryDataStopMode) {
 @property (nonatomic,strong) NSArray *sleepCurveStatusArray;//睡眠周期曲线状态中的各种状态
 @property (nonatomic,assign) NSInteger fallAlseepAllTime;//入睡时长 单位:分钟
 @property (nonatomic,assign) NSInteger wakeAndLeaveBedBeforeAllTime ;//醒来和起床之间的那段时间 单位:分钟
-@property (nonatomic,readonly) NSInteger duration;//实际睡觉总时长，除掉入睡时间和清醒时间。
+@property (nonatomic,assign) NSInteger duration;//实际睡觉总时长，除掉入睡时间和清醒时间。
 @property (nonatomic,assign) NSInteger deepSleepPerc;  //深睡百分比
 @property (nonatomic,assign) NSInteger inSleepPerc ; //中睡百分比
 @property (nonatomic,assign) NSInteger lightSleepPerc;  //浅睡百分比
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger,HistoryDataStopMode) {
 @property (nonatomic,assign) NSInteger deepSleepAllTime;//深睡时长
 @property (nonatomic,assign) NSInteger sleepEfficient;//有效睡眠比例 (0~100)
 @property (nonatomic,assign) NSInteger sleepScore;//得分 (0 ~ 100)
-@property (nonatomic,assign) NSInteger wake_Times;//睡中清醒次数
+@property (nonatomic,assign) NSInteger wakeTimes;//睡中清醒次数
 
 @end
 
