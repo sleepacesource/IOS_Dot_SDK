@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BluetoothManager/SLPDataTransferDef.h>
+#import <SLPCommon/SLPDataTransferDef.h>
 
 @interface MilkySleepStatus : NSObject
 @property (nonatomic,assign)SLPSleepStataus sleepStatus;

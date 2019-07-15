@@ -9,5 +9,5 @@
 #import "SLPBLEBaseSendPacket.h"
 
 @interface SLPBLESendPacketV_0 : SLPBLEBaseSendPacket
-
+@property (nonatomic, assign) int messageSequence;//消息序号
 @end

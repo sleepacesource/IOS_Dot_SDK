@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SLPDataTransferDef.h"
+#import <SLPCommon/SLPCommon.h>
 
 @interface SLPBLEBaseEntity : NSObject
 @property (nonatomic,assign) NSInteger messageType;

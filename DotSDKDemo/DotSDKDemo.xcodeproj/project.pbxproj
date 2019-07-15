@@ -22,6 +22,7 @@
 		260493D01F6B80B40035E2E8 /* SLPUnderlineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 260493CF1F6B80B40035E2E8 /* SLPUnderlineButton.m */; };
 		263642EA1F453C6B009F6BD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 263642EC1F453C6B009F6BD8 /* Localizable.strings */; };
 		263642EF1F454773009F6BD8 /* Milky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263642EE1F454773009F6BD8 /* Milky.framework */; };
+		264784EE22DC8BA700FF6AE2 /* SLPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264784ED22DC8BA700FF6AE2 /* SLPCommon.framework */; };
 		265628DC1F4443E2000CC012 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 265628DB1F4443E2000CC012 /* main.m */; };
 		265628DF1F4443E2000CC012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 265628DE1F4443E2000CC012 /* AppDelegate.m */; };
 		265628E71F4443E2000CC012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265628E61F4443E2000CC012 /* Assets.xcassets */; };
@@ -139,6 +140,7 @@
 		263642EB1F453C6B009F6BD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		263642ED1F453C6E009F6BD8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		263642EE1F454773009F6BD8 /* Milky.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Milky.framework; sourceTree = "<group>"; };
+		264784ED22DC8BA700FF6AE2 /* SLPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SLPCommon.framework; sourceTree = "<group>"; };
 		265628D71F4443E2000CC012 /* DotSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265628DB1F4443E2000CC012 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		265628DD1F4443E2000CC012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				2656290F1F444445000CC012 /* libc++.tbd in Frameworks */,
 				263642EF1F454773009F6BD8 /* Milky.framework in Frameworks */,
 				265629DF1F444CF9000CC012 /* BluetoothManager.framework in Frameworks */,
+				264784EE22DC8BA700FF6AE2 /* SLPCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +333,7 @@
 		265628CE1F4443E2000CC012 = {
 			isa = PBXGroup;
 			children = (
+				264784ED22DC8BA700FF6AE2 /* SLPCommon.framework */,
 				263642EE1F454773009F6BD8 /* Milky.framework */,
 				265629DD1F444CF9000CC012 /* BluetoothManager.framework */,
 				265629651F44490D000CC012 /* MBProgressHUD */,
@@ -631,6 +635,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				"zh-Hans",
 				en,
