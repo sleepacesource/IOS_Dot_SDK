@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+static const NSInteger kDeviceNameLength = 14;
+static const NSInteger kDeviceIDLength = 14;
+static const NSInteger kSSIDLength = 33;
+static const NSInteger kPasswordLength = 65;
+static const NSInteger kMacAddressLength = 6;
+static const NSInteger kServerAddressLength = 32;
+static const NSInteger kHttpAddressLength = 128;
+
 @interface SLPTools : NSObject
 + (NSData *)streamDataByInt64:(int64_t)value;
 + (NSData *)streamDataByInt32:(int32_t)value;
@@ -20,11 +28,16 @@
 + (int8_t)byteToInt8:(Byte *)byte;
 +(short)bytesToShort:(Byte *)src;
 
+//将int8字符串array转化成data
++ (NSData *)contentDataFromIntArray:(NSArray<NSString *> *)array;
+//将NSData转化成Uint8字符串的array
++ (NSArray *)uint8ArrayFromData:(NSData *)data;
+
+
 //清空mutableData
 + (void)emptyMutableData:(NSMutableData *)mutData;
 //从dataBuffer中移除range范围的数据
 + (void)removeDataAtRange:(NSRange)range fromDataBuffer:(NSMutableData *)dataBuffer;
-
 /*从buffer前面开始查找第一个和data相等的location
  data   :要查找的subData
  buffer :源buffer
@@ -52,4 +65,16 @@
 // [1.0,2.0,3.0,4.0,5]转化成array 或者 1.0,2.0,3.0,4.0,5.0
 + (NSArray *)arrayFromCFloatList:(float *)floatList count:(NSInteger)count;
 + (NSString *)stringFromCFloatList:(float *)floatList count:(NSInteger)count;
++ (NSString *)stringFromData:(NSData *)data offset:(NSInteger)offset length:(NSInteger)length;
++ (NSData *)destinationLengthData:(NSInteger)length string:(NSString *)string;
+//wifi名称和密码
++ (NSData *)payloadWithSSID:(NSString *)ssid password:(NSString *)password;
++ (NSString *)parseDeviceNameWithOffset:(NSInteger)offset data:(NSData *)data;
++ (NSString *)parseDeviceIDWithOffset:(NSInteger)offset data:(NSData *)data ;
++ (NSString *)parseSSIDWithOffset:(NSInteger)offset data:(NSData *)data ;
++ (NSString *)parseMacAddressWithOffset:(NSInteger)offset data:(NSData *)data;
+
++ (UInt8)validDeviceBrightness:(NSInteger)brightness;
++ (UInt8)validDeviceVolume:(NSInteger)volume;
++ (NSString *)MACItemFrom:(UInt8)item;
 @end

@@ -1,50 +1,14 @@
-//
-//  KFLoger.h
-//  navi
-//
-//  Created by zhujuzhang on 11/1/12.
-//
-//
-
-/****************************************************************************
-              统一KF框架日志类
- 支持控制台打印和保存日志文件，使用队列和多线程的方式保存日志，避免了频繁的IO堵塞主线程
-   1. 针对不同类型的日志,定义了不同的宏接口（最下方）, 使用者根据需求直接调用四个宏接口,
-      支持可变参数输入
-      eg:  KFLog_Normal(YES, @"测试日志哈哈哈 %d", 8)
- 
-   2. 日志格式: 年-月-日 时:分:秒 文件名 接口名 Line:行数  日志类型: 日志内容
-      eg: 2012-11-1 13:20:28 File:TestApp.mm Line:29  NORMAL: 测试日志哈哈哈
- 
-   3. 日志文件保存在应用程序的沙盒Library/Caches目录下，以日期进行命名.
-      eg: Log_2012-11-06.dat 
- 
-   4. 在app退出或者其他情况下，需要强制写文件，使用 KFLog_Flush()宏
- 
-   5. 增加了开发级别的log接口，三个级别，可以使用三个宏来控制是否开启
- 
-   6. 建议在工程的pch文件中引用此头文件,这样可以避免多处引用
-        #import "KFLoger.h"
-******************************************************************************/
-
-
 #import <Foundation/Foundation.h>
 #include <sys/time.h>
 
-#define  kMAX_CACHE_LOG_COUNT     1      //日志队列里，最大缓存日志数，达到就写文件
+typedef NS_ENUM(NSInteger,KFLogerLevel) {
+    KFLogerLevel_Disable = 0x0,
+    KFLogerLevel_PrintConsole = 0x01,
+    KFLogerLevel_WriteFile = 0x02,
+    KFLogerLevel_All = 0x03,
+};
 
-
-//  #define  KFLOG_OPEN                       // 总的日志开关，确认发布时根据需要是否关闭
-
-//#define  KFLOG_PRINT_CONSOLE              // 总的控制台打印日志开关
-
-//#define  KFLOG_ALL_WRITE_FILE             // 控制所有的日志都写文件,注意只是测试时使用打开 默认关闭
-
-//用于控制开发级别log的开关,级别从0到2逐渐增加
-#define  kOPEN_DEV_0
-#define  kOPEN_DEV_1
-#define  kOPEN_DEV_2
-
+extern KFLogerLevel g_Loglevel;
 
 //日志的信息类型
 enum KFLoger_Type
@@ -115,9 +79,7 @@ enum KFLoger_Type
 @end
 
 
-
-
-#ifdef SLP_DEBUG_KFLOG_OPEN    //打开所有的日志开关
+#define KFSetLogerLevel(level) (g_Loglevel = level)
 
 //封装一个宏,  外部不要直接调用这个宏
 #define KFLog(type, needSave,logContent,...)                                                    \
@@ -134,12 +96,6 @@ enum KFLoger_Type
                 }                                                                               \
             }                                                                                   \
 
-
-#else
-
-#define  KFLog(type, needSave, logContent,...)
-
-#endif
 
 
 

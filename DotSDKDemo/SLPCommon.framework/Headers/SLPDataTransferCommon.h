@@ -10,18 +10,19 @@
 #import "SLPDataTransferDef.h"
 
 //TCP或蓝牙的帧类型
-typedef enum {
+typedef NS_ENUM(NSInteger, SLPFramTypes) {
     SLPFramType_ACK = 0,
     SLPFramType_Post,
     SLPFramType_Request,
     SLPFramType_Response
-}SLPFramTypes;
+};
 
 typedef NS_ENUM(NSInteger,SLPDeviceCategory) {
     SLPDeviceCategory_None,
     SLPDeviceCategory_Reston,
     SLPDeviceCategory_Pillow,
     SLPDeviceCategory_Milky,
+    SLPDeviceCategory_Binatone,
 };
 
 //TCP协议和蓝牙新协议的分隔符,每个包用分割符分开
@@ -42,4 +43,5 @@ static const Byte kSeparator[4] = {0x24,0x5F,0x40,0x2D};
 + (NSInteger)textureFromDeviceCode:(NSString *)deviceCode;
 + (SLPDeviceCategory)deviceCategoryFromDeviceCode:(NSString *)deviceCode;
 + (SLPDeviceCategory)deviceCategoryFromDeviceType:(SLPDeviceTypes)deviceType;
++ (SLPDataTransferStatus)transforStatusFrom:(SLPDataTransferReturnStatus)code;
 @end

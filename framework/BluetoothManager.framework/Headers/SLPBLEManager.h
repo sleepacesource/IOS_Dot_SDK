@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SLPBLEDef.h"
-#import "SLPDataTransferDef.h"
+#import <SLPCommon/SLPCommon.h>
 
 
 @class CBCentralManager;
@@ -37,5 +37,13 @@
 
 //查询接口
 - (SLPDeviceTypes)deviceTypeOfPeripheral:(CBPeripheral *)peripheral;
+- (NSString *)deviceNameOfPeripheral:(CBPeripheral *)peripheral;
 - (NSInteger)deviceTextureOfPeripheral:(CBPeripheral *)peripheral;
+
+//通过设备名称查询蓝牙句柄 不建议使用
+- (CBPeripheral *)_peripheralOfDeviceName:(NSString *)deviceName;
+- (void)_fillPeripheral:(CBPeripheral *)peripheral
+         withDeviceName:(NSString *)deviceName
+             deviceType:(int)deviceType protocolType:(int)protocolType
+                withWriteWithResponse:(BOOL)writeWithResponse;
 @end
