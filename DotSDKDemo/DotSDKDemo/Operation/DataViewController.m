@@ -18,6 +18,7 @@
 #import "SLPTitleValueArrowTableViewCell.h"
 #import "DealWithData.h"
 
+
 @interface DataViewController ()<UITableViewDelegate,UITableViewDataSource,SleepViewDelegate>
 {
     NSArray *simulateLongTimeTitle;
@@ -199,10 +200,10 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [SLPBLESharedManager milky:self.selectPeripheral.peripheral personType:SLPSleepPersonType_Male historyDownloadWithStartTime:startTime endTime:endTime eachDataCallback:^(SLPDataTransferStatus status, id data) {
-        SLPHistoryData *historyData=(SLPHistoryData *)data;
+        SLPMilkyHistoryData *historyData=(SLPMilkyHistoryData *)data;
         [historyArr addObject:historyData];
         NSLog(@"download history data:>%@",historyData);
-//                [SimulateData dealwithData:historyData];
+                [SimulateData dealwithData:historyData];
     } finishCallback:^(SLPDataTransferStatus status, id data) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSLog(@"download history data finished");

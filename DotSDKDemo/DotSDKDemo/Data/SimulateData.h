@@ -15,6 +15,6 @@
 
 + (UserObj *)simulateData;
 
-+ (UserObj *)dealwithData:(SLPHistoryData *)historyData;
++ (UserObj *)dealwithData:(SLPMilkyHistoryData *)historyData;
 
 @end

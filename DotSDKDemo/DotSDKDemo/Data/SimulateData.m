@@ -55,7 +55,7 @@
     return obj;
 }
 
-+ (UserObj *)dealwithData:(SLPHistoryData *)historyData
++ (UserObj *)dealwithData:(SLPMilkyHistoryData *)historyData
 {
     
     M_HistoryDataDetail *detail =(M_HistoryDataDetail *)historyData.detail;
@@ -73,7 +73,7 @@
     obj.date= [sd stringFromDate:startDate];
     
     obj.reportFlag=[NSNumber numberWithInteger:historyData.summary.reportFlag];
-    obj.InvalidFlag=[NSNumber numberWithInteger:((SLPMilkyHistoryData *)analysis).dataStatus];
+    obj.InvalidFlag=[NSNumber numberWithInteger:historyData.dataStatus];
     obj.SleepCurveStr=[NSString stringWithFormat:@"[%@]",[analysis.sleepCurveArray componentsJoinedByString:@","]];
     obj.sleepCurveStatusStr=[NSString stringWithFormat:@"[%@]",[analysis.sleepCurveStatusArray componentsJoinedByString:@","]];
     obj.duration=[NSNumber numberWithInteger:analysis.duration];
