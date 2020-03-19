@@ -11,7 +11,7 @@
 #import "SLPMilkyDef.h"
 #import "SLPBLEManager+Milky.h"
 
-#define kMilkyVersion  @"3.2.0";
+#define kMilkyVersion  @"3.2.1";
 
 // In this header, you should import all the public headers of your framework using statements like #import <Milky/PublicHeader.h>
 

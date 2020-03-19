@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger,SLPDeviceCategory) {
     SLPDeviceCategory_Pillow,
     SLPDeviceCategory_Milky,
     SLPDeviceCategory_Binatone,
+    SLPDeviceCategory_Sal,
 };
 
 //TCP协议和蓝牙新协议的分隔符,每个包用分割符分开

@@ -47,6 +47,7 @@ typedef NS_ENUM(UInt8, SLPSingleMusicType) {
 @property (nonatomic,assign) SLPDeviceMusicType musicType;
 @property (nonatomic,assign) MusicCirclePlay circle;
 
+- (SLPAlbumMusicPlayMode)playMode ;
 + (NSInteger)lenth;
 //音乐结构长度
 + (NSInteger)lenthWithType:(SLPDeviceMusicType)type;

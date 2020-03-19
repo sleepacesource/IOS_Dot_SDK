@@ -123,6 +123,7 @@ typedef NS_ENUM(NSInteger,SLPBLEMessagetUniqTypes) {
     SLPBLEMessagetUniqType_NOX2MusicOperation,//音乐操作
     SLPBLEMessagetUniqType_NOX2SceneOperation,//场景操作
     SLPBLEMessagetUniqType_NOX2SleepAidOperation,//助眠操作
+    SLPBLEMessagetUniqType_BleNoxGetAlarmList, //获取闹钟列表
     SLPBLEMessagetUniqType_NOX2AlarmOperation,//闹铃操作
     SLPBLEMessagetUniqType_NOX2PreviewOperation,//预览操作
     SLPBLEMessagetUniqType_NOX2PlayOperation,//预览操作
@@ -142,6 +143,46 @@ typedef NS_ENUM(NSInteger,SLPBLEMessagetUniqTypes) {
     SLPBLEMessagetUniqType_NOX2GetDeviceLog,
     SLPBLEMessagetUniqType_NOX2ConfigurePIN,//配置PIN码
     SLPBLEMessagetUniqType_NOX2GetPIN,//获取PIN码
+    //SA1001-2
+    SLPBLEMessagetUniqType_SABTimeCalibration,//时间校准
+    SLPBLEMessagetUniqType_SABFactoryReset,//恢复出厂设置
+    SLPBLEMessagetUniqType_SABGetSystemInfo,//获取系统信息
+    SLPBLEMessagetUniqType_SABGetVersionInfo,//获取版本信息
+    SLPBLEMessagetUniqType_SABConfigureUserInfo,//配置用户信息
+    SLPBLEMessagetUniqType_SABConfigureSleepScene,//睡眠场景配置
+    SLPBLEMessagetUniqType_SABConfigureLightScene,//照明场景配置
+    SLPBLEMessagetUniqType_SABConfigureCommonScene,//普通设备场景配置
+    SLPBLEMessagetUniqType_SABConfigureMultyScene,//多个场景同时配置
+    SLPBLEMessagetUniqType_SABConfigureAlarm,//闹铃配置
+    SLPBLEMessagetUniqType_SABAromaOperation,//香薰控制
+    SLPBLEMessagetUniqType_SABLightOperation,//灯光操作
+    SLPBLEMessagetUniqType_SABMusicOperation,//音乐操作
+    SLPBLEMessagetUniqType_SABSceneOperation,//场景操作
+    SLPBLEMessagetUniqType_SABSleepAidOperation,//助眠操作
+    SLPBLEMessagetUniqType_SABAlarmOperation,//闹铃操作
+    SLPBLEMessagetUniqType_SABPreviewOperation,//预览操作
+    SLPBLEMessagetUniqType_SABPlayOperation,//预览操作
+    SLPBLEMessagetUniqType_SABGetDeviceStatus,//获取设备状态
+    SLPBLEMessagetUniqType_SABGetOperatingMode,//获取工作模式
+    SLPBLEMessagetUniqType_SABPostOperatingMode,//post工作模式
+    SLPBLEMessagetUniqType_SABGetMusicList,//获取音乐列表
+    SLPBLEMessagetUniqType_SABGetProgressOfUPgrade,//获取升级进度
+    SLPBLEMessagetUniqType_SABUPgradeSummaryUpload,//升级概要信息上传
+    SLPBLEMessagetUniqType_SABUPgradeContrentUpload,//升级包上传
+    SLPBLEMessagetUniqType_SABGestureOperation,//手势操作
+    SLPBLEMessagetUniqType_SABConfigureWiFi,//配置WiFi
+    SLPBLEMessagetUniqType_SABNightLightSetting,//小夜灯设置
+    SLPBLEMessagetUniqType_SABConfigureAlbum,//配置专辑列表
+    SLPBLEMessagetUniqType_SABGetDeviceLog,
+    SLPBLEMessagetUniqType_SABConfigurePIN,//配置PIN码
+    SLPBLEMessagetUniqType_SABGetPIN,//获取PIN码
+    SLPBLEMessagetUniqType_SABConfigTimeAroma,//配置定时香薰
+    SLPBLEMessagetUniqType_SABConfigCenterKey,//配置中心键
+    SLPBLEMessagetUniqType_SABGetAlarmList,//获取闹钟列表
+    SLPBLEMessagetUniqType_SABGetTimeAroma,//获取定时香薰
+    SLPBLEMessagetUniqType_SABGetCenterKey,//获取中心键
+    SLPBLEMessagetUniqType_SABGetPINCode,//获取PIN码
+    
     
     //Binatone
     SLPBLEMessagetUniqType_BinatoneLogin,//reston登录
@@ -282,6 +323,10 @@ typedef NS_ENUM(NSInteger,SLPBinatonePostMessageType) {
 
 typedef NS_ENUM(NSInteger,SLPBLENoxPostMessageType) {
     SLPBLENoxPostMessageType_WorkStatus = 0x41,//工作模式
+};
+
+typedef NS_ENUM(NSInteger,SLPBLESA1001_2PostMessageType) {
+    SLPBLESA1001_2PostMessageType_WorkStatus = 0x41,//工作模式
 };
 
 typedef NS_ENUM(UInt8, SceneOperation) {
