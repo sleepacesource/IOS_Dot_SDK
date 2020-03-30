@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #include <sys/time.h>
-
 typedef NS_ENUM(NSInteger,KFLogerLevel) {
     KFLogerLevel_Disable = 0x0,
     KFLogerLevel_PrintConsole = 0x01,
@@ -41,6 +40,8 @@ enum KFLoger_Type
     struct tm*      _logTime;                   //日志时间
     int       _logType;                   //日志类型
     BOOL            _isNeedSaveFile;            //是否保存文件
+    BOOL            _isWithPrefix;            //是否打印日志的前缀
+    BOOL            _isLogFromJs;             // 是否是JS日志
 }
 
 
@@ -51,6 +52,8 @@ enum KFLoger_Type
 @property(nonatomic, assign)struct tm* logTime;
 @property(nonatomic, assign)int    logType;
 @property(nonatomic, assign)BOOL   isNeedSaveFile;
+@property(nonatomic, assign)BOOL   isWithPrefix;
+@property(nonatomic, assign)BOOL   isLogFromJs;
 
 
 @end
@@ -73,7 +76,7 @@ enum KFLoger_Type
 +(KFLoger*)GetInstance;
 
 
-- (void)addLog:(NSString*)txtContent sourceName:(const char*)sourceName funcName:(const char*)funcName  lineNum:(int)lineNum logType:(NSInteger)logType isNeedSave:(BOOL)isNeedSave;
+- (void)addLog:(NSString*)txtContent sourceName:(const char*)sourceName funcName:(const char*)funcName  lineNum:(int)lineNum logType:(NSInteger)logType isWithPrefix:(BOOL)isWithPrefix isLogFromJs:(BOOL)isLogFromJs isNeedSave:(BOOL)isNeedSave;
 
 - (void)flushLogs;
 @end
@@ -82,7 +85,7 @@ enum KFLoger_Type
 #define KFSetLogerLevel(level) (g_Loglevel = level)
 
 //封装一个宏,  外部不要直接调用这个宏
-#define KFLog(type, needSave,logContent,...)                                                    \
+#define KFLog(type, needSave, withPrefix, logFromJs,logContent,...)                                                    \
             {                                                                                   \
                 if( (logContent != nil))                                                        \
                 {                                                                               \
@@ -92,6 +95,8 @@ enum KFLoger_Type
                                          funcName:__FUNCTION__                                  \
                                           lineNum:__LINE__                                      \
                                           logType:type                                          \
+                                     isWithPrefix:withPrefix                                 \
+                                     isLogFromJs:logFromJs                                 \
                                        isNeedSave:needSave];                                    \
                 }                                                                               \
             }                                                                                   \
@@ -103,26 +108,29 @@ enum KFLoger_Type
 #pragma mark -------------------------------------------------------对外接口宏定义
 #pragma mark --- 不同类型的日志宏，外部直接使用
 // needSave: 是否需要写文件保存    logContent: 日志文本内容(NSString)
+// withPrefix: 是否需要打印前缀    日期，文件名等
+// logFromJs:  是否是前端的JS日志
+
 
 //普通日志
-#define KFLog_Normal(needSave, logContent,...)         KFLog(LogType_Normal, needSave,logContent,##__VA_ARGS__)
+#define KFLog_Normal(needSave, withPrefix, logFromJs, logContent,...)         KFLog(LogType_Normal, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //debug日志
-#define KFLog_Debug(needSave, logContent,...)          KFLog(LogType_Debug, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Debug(needSave, withPrefix, logFromJs, logContent,...)          KFLog(LogType_Debug, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //警告信息日志
-#define KFLog_Warning(needSave, logContent,...)        KFLog(LogType_Warning, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Warning(needSave, withPrefix, logFromJs, logContent,...)        KFLog(LogType_Warning, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //错误信息日志
-#define KFLog_Error(needSave, logContent,...)          KFLog(LogType_Error, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Error(needSave, withPrefix, logFromJs, logContent,...)          KFLog(LogType_Error, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 
 //开发使用的log, 不同的级别
-#define KFLog_Dev0(needSave, logContent,...)           KFLog(LogType_Dev_Level0, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Dev0(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level0, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
-#define KFLog_Dev1(needSave, logContent,...)           KFLog(LogType_Dev_Level1, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Dev1(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level1, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
-#define KFLog_Dev2(needSave, logContent,...)           KFLog(LogType_Dev_Level2, needSave, logContent,##__VA_ARGS__)
+#define KFLog_Dev2(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level2, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //强制保存日志到文件
 #define KFLog_Flush()       [[KFLoger GetInstance] flushLogs]
@@ -130,7 +138,7 @@ enum KFLoger_Type
 
 
 //这个宏是用来控制日志全部都写到文件里去
-#define KFLog_FORCE(type, needSave,logContent,...)                                                    \
+#define KFLog_FORCE(type, needSave, withPrefix, logFromJs, logContent,...)                                                    \
         {                                                                                   \
             if( (logContent != nil))                                                        \
             {                                                                               \
@@ -140,8 +148,10 @@ enum KFLoger_Type
                 funcName:__FUNCTION__                                  \
                 lineNum:__LINE__                                      \
                 logType:type                                          \
+                isWithPrefix:withPrefix                                          \
+                isLogFromJs:logFromJs                                          \
                 isNeedSave:needSave];                                    \
             }                                                                               \
         }                                                                                   \
 
-#define KFLog_WRITE_FILE(needSave, logContent,...)           KFLog_FORCE(LogType_Dev_Level2, needSave, logContent,##__VA_ARGS__)
+#define KFLog_WRITE_FILE(needSave, withPrefix, logFromJs, logContent,...)           KFLog_FORCE(LogType_Dev_Level2, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)

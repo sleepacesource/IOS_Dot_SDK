@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/KFLoger.h</key>
 		<data>
-		ZB/5U28ui7SP1wJoq4RcKHPr8is=
+		XU4VpmeF8m5zlXGj3WSx1oT9cYg=
 		</data>
 		<key>Headers/Loop.h</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/SLPTools.h</key>
 		<data>
-		qRsWE5D4L2hUi/+ZMQ2w5p+rUFI=
+		4RAX3HRfZzoO7Hqg4OlWxG/TOT0=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -78,11 +78,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZB/5U28ui7SP1wJoq4RcKHPr8is=
+			XU4VpmeF8m5zlXGj3WSx1oT9cYg=
 			</data>
 			<key>hash2</key>
 			<data>
-			dPihpYEumKxKmFOu3kymlgP0XQk/Vx6zqGLpr0QZ0mE=
+			IzAqoJKTa2FMiy1E+u+zYn7CY9L0NkFShIXINFFp7M8=
 			</data>
 		</dict>
 		<key>Headers/Loop.h</key>
@@ -188,11 +188,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qRsWE5D4L2hUi/+ZMQ2w5p+rUFI=
+			4RAX3HRfZzoO7Hqg4OlWxG/TOT0=
 			</data>
 			<key>hash2</key>
 			<data>
-			8hbkbwbcIDf/N3kMPhZIbTMkOAnBfCMbK9VVa/Kx3bc=
+			RC47zTMEEvQUgt6vjCHjDjrFHIT351isrvM/6nQ9hdA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

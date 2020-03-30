@@ -77,4 +77,7 @@ static const NSInteger kHttpAddressLength = 128;
 + (UInt8)validDeviceBrightness:(NSInteger)brightness;
 + (UInt8)validDeviceVolume:(NSInteger)volume;
 + (NSString *)MACItemFrom:(UInt8)item;
+
++ (NSString *)getCurrentDeviceModel;
++ (NSString *)getPhoneInfo;
 @end
