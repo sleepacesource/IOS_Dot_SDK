@@ -13,7 +13,9 @@
 
 @class CBPeripheral;
 @interface SLPBLEManager (Connect)
+/*
 - (BOOL)connectPeripheral:(CBPeripheral *)peripheral deviceCode:(NSString *)deviceCode deviceName:(NSString*)deviceName timeout:(CGFloat)timeout completion:(SLPBLEConnectHandle)handle;
 
 - (BOOL)connectPeripheral:(CBPeripheral *)peripheral deviceType:(SLPDeviceTypes)deviceType timeout:(CGFloat)timeout completion:(SLPBLEConnectHandle)handle;
+ */
 @end

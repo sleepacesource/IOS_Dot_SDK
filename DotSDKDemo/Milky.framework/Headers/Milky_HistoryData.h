@@ -52,6 +52,6 @@ typedef NS_ENUM(NSInteger,Milkly_MotionfreqLevels) {
 @end
 
 @interface M_HistoryDataAnalysis : HistoryDataAnalysis
-@property (nonatomic,strong) NSArray<NSNumber *> *motion_intensityAry;/*体动 0-250*/
+@property (nonatomic,strong) NSArray<NSNumber *> *motion_intensityAry;/* 体动 array number 0-250*/
 @property (nonatomic,assign) Milkly_MotionfreqLevels motionfreqLevel;//体动频率
 @end

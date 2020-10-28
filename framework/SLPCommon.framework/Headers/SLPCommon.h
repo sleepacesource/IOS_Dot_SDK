@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "SLPTools.h"
 #import "KFLoger.h"
 #import "CRC.h"
@@ -17,5 +16,9 @@
 #import "SLPDeviceInfo.h"
 #import "SLPLight.h"
 #import "SLPTimeInfo.h"
+#import "SLPAidInfo.h"
 #import "SLPSleepaceMusicInfo.h"
+#import "SLPClockDormancyBean.h"
+#import "SLPAlarmInfo.h"
 #import "Loop.h"
+#import "SLPHTTPManager.h"

@@ -10,23 +10,15 @@ typedef NS_ENUM(NSInteger,KFLogerLevel) {
 extern KFLogerLevel g_Loglevel;
 
 //日志的信息类型
-enum KFLoger_Type
-{
-    LogType_None = -1,
-    
-    LogType_Normal,       //普通log
-    LogType_Debug,        //调试log
-    LogType_Warning,      //警告信息log
-    LogType_Error,        //错误信息的log
-    
-    //增加开发使用的log，分为三个级别,0-2, 级别逐渐增加，可以用宏控制是否打印
-    LogType_Dev_Level0,
-    LogType_Dev_Level1,
-    LogType_Dev_Level2,
-    
+typedef NS_ENUM(NSInteger, KFLogLevelType) { // 日志等级
+    KFLogLevelType_Off = 0, // 日志关
+    KFLogLevelType_Log,  //普通log
+    KFLogLevelType_Info, //调试log
+    KFLogLevelType_Warn, //警告信息log
+    KFLogLevelType_Error //错误信息的log
 };
 
-
+extern KFLogLevelType g_logerType;
 
 //KF日志信息，由调用者创建，传递给KFLoger使用
 @interface KFLogInfo : NSObject
@@ -84,6 +76,8 @@ enum KFLoger_Type
 
 #define KFSetLogerLevel(level) (g_Loglevel = level)
 
+#define KFSetLogerType(type) (g_logerType = type)
+
 //封装一个宏,  外部不要直接调用这个宏
 #define KFLog(type, needSave, withPrefix, logFromJs,logContent,...)                                                    \
             {                                                                                   \
@@ -113,24 +107,16 @@ enum KFLoger_Type
 
 
 //普通日志
-#define KFLog_Normal(needSave, withPrefix, logFromJs, logContent,...)         KFLog(LogType_Normal, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
+#define KFLog_Normal(needSave, withPrefix, logFromJs, logContent,...)         KFLog(KFLogLevelType_Log, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //debug日志
-#define KFLog_Debug(needSave, withPrefix, logFromJs, logContent,...)          KFLog(LogType_Debug, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
+#define KFLog_Debug(needSave, withPrefix, logFromJs, logContent,...)          KFLog(KFLogLevelType_Info, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //警告信息日志
-#define KFLog_Warning(needSave, withPrefix, logFromJs, logContent,...)        KFLog(LogType_Warning, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
+#define KFLog_Warning(needSave, withPrefix, logFromJs, logContent,...)        KFLog(KFLogLevelType_Warn, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //错误信息日志
-#define KFLog_Error(needSave, withPrefix, logFromJs, logContent,...)          KFLog(LogType_Error, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
-
-
-//开发使用的log, 不同的级别
-#define KFLog_Dev0(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level0, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
-
-#define KFLog_Dev1(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level1, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
-
-#define KFLog_Dev2(needSave, withPrefix, logFromJs, logContent,...)           KFLog(LogType_Dev_Level2, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
+#define KFLog_Error(needSave, withPrefix, logFromJs, logContent,...)          KFLog(KFLogLevelType_Error, needSave, withPrefix, logFromJs, logContent,##__VA_ARGS__)
 
 //强制保存日志到文件
 #define KFLog_Flush()       [[KFLoger GetInstance] flushLogs]

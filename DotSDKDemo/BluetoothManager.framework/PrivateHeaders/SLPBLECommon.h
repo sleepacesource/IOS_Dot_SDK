@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger,SLPBLEProtocalType){
     SLPBLEProtocalType_Original = 0,
     SLPBLEProtocalType_Promotional,
     SLPBLEProtocalType_Sepcial,
+    SLPBLEProtocalType_NOX,
 };
 
 typedef NS_ENUM(UInt8, BLE_RespondsCode) {
@@ -214,11 +215,17 @@ typedef NS_ENUM(NSInteger,SLPBLEMessagetUniqTypes) {
     SLPBLEMessagetUniqType_BinatoneRestoreFactorySetting,//恢复出厂设置
     
     //BLEWIFI配置
-    SLPBLEMessagetUniqType_BLEWifiTCPProtocolConfig,//TCP协议格式的bleWifi配置
     SLPBLEMessagetUniqType_BLEWifiBLEProProtocolConfig,//蓝牙新协议格式的bleWifi配置
-    SLPBLEMessagetUniqType_BLEWifiConfigDeviceInfo,//获取设备信息
+    SLPBLEMessagetUniqType_BLEWifiTCPProtocolConfig,//TCP协议格式的bleWifi配置
+    SLPBLEMessagetUniqType_BLEWifiConfigGetDeviceInfo,//获取设备信息
     SLPBLEMessagetUniqType_BLEWifiConfigGetHTTPServerAddress,//获取服务器HTTP地址
     
+    //BLEWIFI配置-NOX
+    SLPBLEMessagetUniqType_BLEWifiTCPProtocolNOXConfig,//NOX TCP协议格式的bleWifi配置
+    SLPBLEMessagetUniqType_BLEWifiNOXConfigGetDeviceInfo,//获取设备信息
+    SLPBLEMessagetUniqType_BLEWifiNOXConfigGetHTTPServerAddress,//获取服务器HTTP地址
+    SLPBLEMessagetUniqType_BLEWifiNOXConfigGetWIFIStatus,//获取wifi连接状态
+
     //通用ID
     SLPBLEMessagetUniqType_ProtocolOne,//蓝牙最老版协议 比如Reston Pillow
     SLPBLEMessagetUniqType_ProtocolTwo,//蓝牙新版协议 枕头以及后面的nox2

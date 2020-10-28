@@ -12,5 +12,6 @@
 #import "SLPBLESendPacketV_0.h"
 #import "SLPBLESendPacketV_1.h"
 #import "SLPBLESendPacketV_2.h"
+#import "SLPBLESendPacketV_3.h"
 
 #endif /* SLPBleSendPacketHeads_h */

@@ -45,4 +45,5 @@ static const Byte kSeparator[4] = {0x24,0x5F,0x40,0x2D};
 + (SLPDeviceCategory)deviceCategoryFromDeviceCode:(NSString *)deviceCode;
 + (SLPDeviceCategory)deviceCategoryFromDeviceType:(SLPDeviceTypes)deviceType;
 + (SLPDataTransferStatus)transforStatusFrom:(SLPDataTransferReturnStatus)code;
++ (SLPDeviceTypes)backDeviceTypeFormDeviceId:(NSString *)idstring;
 @end
